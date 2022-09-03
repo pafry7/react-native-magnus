@@ -67,6 +67,7 @@ const Toast: React.FunctionComponent<SnackbarProps> = (incomingProps) => {
     alignItems,
     alignSelf,
     shadow,
+    style,
     shadowColor,
     opacity: opacityProp,
     useNativeDriver,

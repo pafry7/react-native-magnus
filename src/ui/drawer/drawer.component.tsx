@@ -23,17 +23,17 @@ const Drawer = React.forwardRef<DrawerRef, DrawerProps>(
 
     const {
       direction,
-      drawerPercentage,
       animationTime,
       backdropColor,
       animationInTiming,
-      animationIn,
-      animationOut,
       onBackdropPress,
       isVisible,
       animationOutTiming,
-      swipeDirection,
       onSwipeComplete,
+      swipeDirection,
+      animationIn,
+      animationOut,
+      style,
       children,
       ...rest
     } = props;
@@ -76,7 +76,7 @@ const Drawer = React.forwardRef<DrawerRef, DrawerProps>(
         onBackdropPress={
           'onBackdropPress' in props ? onBackdropPress : () => setVisible(false)
         }
-        style={computedStyle.drawer}
+        style={{ ...computedStyle.drawer, style }}
         {...rest}
       >
         <View style={computedStyle.container}>
@@ -86,15 +86,5 @@ const Drawer = React.forwardRef<DrawerRef, DrawerProps>(
     );
   }
 );
-
-// Drawer.defaultProps = {
-//   drawerPercentage: 70,
-//   animationTime: 300,
-//   bg: 'white',
-//   backdropColor: 'black',
-//   direction: 'left',
-//   rounded: 'none',
-//   backdropTransitionOutTiming: 0,
-// };
 
 export { Drawer };

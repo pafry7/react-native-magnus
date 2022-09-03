@@ -13,7 +13,7 @@ export function withDefaultProps<
   type Variant = Props & VariantPropsType;
   return class extends React.PureComponent<Variant> {
     static contextType = ThemeContext;
-    context!: React.ContextType<typeof ThemeContext>;
+    static context: React.ContextType<typeof ThemeContext>;
 
     render() {
       const theme = this.context.theme;

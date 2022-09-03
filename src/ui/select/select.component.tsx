@@ -50,9 +50,10 @@ const Select = React.forwardRef<SelectRef, SelectProps>(
     const [visible, setVisible] = useState(props.isVisible || false);
     const [selectedValue, setSelectedValue] = useState(value);
     const [searchTerm, setSearchTerm] = useState<string>('');
-    const isSearchable = useMemo(() => !!searchableProps?.length, [
-      searchableProps,
-    ]);
+    const isSearchable = useMemo(
+      () => !!searchableProps?.length,
+      [searchableProps]
+    );
 
     const computedStyle = getStyle(theme, props);
 
@@ -202,7 +203,7 @@ const Select = React.forwardRef<SelectRef, SelectProps>(
       const mandatoryProps: Partial<InputProps> = {
         value: searchTerm,
         onChangeText: (text: string) => setSearchTerm(text),
-        autoCompleteType: 'off',
+        autoComplete: 'off',
       };
 
       if (searchInputElement) {

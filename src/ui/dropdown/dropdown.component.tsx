@@ -52,6 +52,7 @@ const Dropdown = React.forwardRef<DropdownRef, DropdownProps>(
       borderBottomColor,
       borderLeftColor,
       borderTopColor,
+      style,
       borderRightColor,
       borderWidth,
       borderLeftWidth,
