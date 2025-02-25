@@ -9,8 +9,8 @@ export interface ThemeProviderProps {
   theme?: ThemeType;
 }
 
-export const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = (
-  props
+export const ThemeProvider = (
+  props: React.PropsWithChildren<ThemeProviderProps>
 ) => {
   const { theme: themeProp = {}, children } = props;
 

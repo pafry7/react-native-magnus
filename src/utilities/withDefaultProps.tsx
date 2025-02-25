@@ -4,7 +4,7 @@ import { DefaultProps, VariantPropsType } from '../types';
 
 export function withDefaultProps<
   Props extends object,
-  Defaults extends DefaultProps<Props> = {}
+  Defaults extends DefaultProps<Props> = {},
 >(
   WrappedComponent: React.ComponentClass<Props & Defaults>,
   componentName: keyof NonNullable<ThemeType['components']>,
@@ -15,7 +15,9 @@ export function withDefaultProps<
     static contextType = ThemeContext;
     static context: React.ContextType<typeof ThemeContext>;
 
+    //@ts-ignore
     render() {
+      //@ts-ignore
       const theme = this.context.theme;
 
       if (!componentName) {

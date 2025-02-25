@@ -17,8 +17,9 @@ import { textProps } from '../../types';
 import { getSpecificProps } from '../../utilities';
 
 import { useDefaultProps } from '../../utilities/useDefaultProps';
+import { PropsWithChildren } from 'react';
 
-const Button: React.FunctionComponent<ButtonProps> = (incomingProps) => {
+const Button = (incomingProps: PropsWithChildren<ButtonProps>) => {
   const props = useDefaultProps('Button', incomingProps, {
     bg: 'blue600',
     p: 'lg',
@@ -103,24 +104,6 @@ const Button: React.FunctionComponent<ButtonProps> = (incomingProps) => {
   const underlayColor = getUnderlayColor(theme, props);
   const calculatedRippleColor = getRippleColor(theme, props);
 
-  /**
-   * renders children based on type
-   */
-  const renderChildren = () => {
-    if (typeof children === 'string') {
-      return (
-        <Text
-          {...getSpecificProps(props, ...textProps)}
-          style={computedStyle.text}
-        >
-          {children}
-        </Text>
-      );
-    }
-
-    return children;
-  };
-
   return (
     <RNButton
       {...rest}
@@ -150,7 +133,16 @@ const Button: React.FunctionComponent<ButtonProps> = (incomingProps) => {
       ) : (
         <RNAnimated.View style={computedStyle.container}>
           {prefix}
-          {renderChildren()}
+          {typeof children === 'string' ? (
+            <Text
+              {...getSpecificProps(props, ...textProps)}
+              style={computedStyle.text}
+            >
+              {children}
+            </Text>
+          ) : (
+            children
+          )}
           {suffix}
         </RNAnimated.View>
       )}

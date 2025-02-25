@@ -25,6 +25,7 @@ export type CompoundedRadio<P> = React.FunctionComponent<P> & {
   Group: typeof RadioGroup;
 };
 
+// @ts-ignore
 export interface RadioProps
   extends RNButtonProps,
     BorderPropsType,
